@@ -18,17 +18,20 @@
 
     <div class="container-fluid">
         <div class="row">
-        
-            <input id = "citySearch">
+            <section>
+                <span>Search by City:</span>
+                <div class="input-group">
+                    <input id = "citySearch" type="text"  class="form-control-lg" placeholder="City Name" aria-label="City Name">
+                    <div class="input-group-append">
+                        <button class="btn" type="button" id="searchButton">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <button class="btn" type="button" id="clearButton">Clear Searches</button>
+                <form id="searchHistory"></form>
 
-
-
-
-
-
-
-
-
+            </section>
         </div>
     </div>
     
