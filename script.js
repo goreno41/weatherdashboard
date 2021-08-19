@@ -1,27 +1,38 @@
-var apiKey = "&appid=efde57d5c2503a94e108601163cabffd"
+function weatherDashboard() {
 
-var api = "http://api.openweathermap.org/geo/1.0/direct?q="
+  const apiKey = "&appid=efde57d5c2503a94e108601163cabffd";
 
-var searchInput = document.getElementById(citySearch);
+  const api = "http://api.openweathermap.org/geo/1.0/direct?q="
 
-apiUrl = api + searchInput + apiKey
+  const citySearch = document.getElementById(citySearch);
+  const cityName = document.getElementById(cityName);
+  const searchButton = document.getElementById(searchButton);
+  const clearButton = document.getElementById(clearButton);
 
-function getApi() {
-    
-    console.log(searchInput.nodeValue);
 
-    fetch(apiUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
 
-        console.log(data);
 
+
+
+
+  function getApi() {
       
-    })
-}
+      console.log(searchInput.nodeValue);
 
-var searchButton = document.getElementById("button");
+      fetch(apiUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
 
-searchButton.addEventListener("click", getApi);
+          console.log(data);
+
+        
+      })
+  }
+
+  
+
+  searchButton.addEventListener("click", getApi);
+};
+
