@@ -16,3 +16,7 @@ header {
     margin-bottom: 50px;
     background-color: var(--background);
 }
+
+.center {
+    align-items: center;
+}
