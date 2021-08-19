@@ -36,34 +36,50 @@ var inputScrub = function(event) {
 };
 
 var coordsConvert = function(city) {
-
+  
   var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`;
-
-
+  
+  
   fetch(apiURL).then(function(response) {
     if (response.ok) {
       response.json().then(function(data) {
         var longitude = data.coord["lon"];
         var latitude = data.coord["lat"];
         cityForecast(city, longitude, latitude);
-
+        
         if (document.querySelector(".cityHistory")) {
           document.querySelector(".cityHistory").remove();
         }
-
+        
         saveSearch(city);
         pullSearch();
-
+        
       });
-      } else {
-        alert("Error")
-      }
+    } else {
+      alert("Error")
+    }
   })
   .catch(function(error) {
     alert("Could not load");
   })
 }
 
+var cityForecast = function(city, longitude, latitude) {
+
+  var coordsApiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=minutely,hourly,alerts&appid=${apiKey}`;
+  fetch(coordsApiUrl).then(function(response) {
+    if (response.ok) {
+      response.json().then(function(data) {
+
+
+        cityName.textContent = `${city} (${moment().format("M/D/YYYY")})`;
+
+        getCurrentWeather(data)
+        getForecast(data)
+      });
+    }
+  })
+}
 
 
 var saveSearch = function(city) {
@@ -99,9 +115,6 @@ var searchAgain = function(event) {
 
 
 
-var cityForecast = function(city, longitude, latitude) {
-
-}
 
 
 
