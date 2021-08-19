@@ -66,11 +66,6 @@ var coordsConvert = function(city) {
 
 
 
-
-var cityForecast = function(city, longitude, latitude) {
-
-}
-
 var saveSearch = function(city) {
   cityArray.push(city);
   localStorage.setItem("cities", JSON.stringify(cityArray));
@@ -78,11 +73,11 @@ var saveSearch = function(city) {
 
 var pullSearch = function() {
   cityArray = JSON.parse(localStorage.getItem("cities"));
-
+  
   var searchedList = document.createElement('ul');
   searchedList.className = "list-group cityHistory";
   searchHistory.appendChild(searchedList);
-
+  
   for (var i = 0; i < cityArray.length; i++) {
     var searchedCitiesButton = document.createElement("button");
     searchedCitiesButton.classname = "list-group-item";
@@ -91,13 +86,29 @@ var pullSearch = function() {
     searchedCitiesButton.textContent = cityArray[i];
     searchedList.prepend(searchedCitiesButton);
   }
-
+  
   var cityHistory = document.querySelector("cityHistory");
   cityHistory.addEventListener("click", searchAgain)
-
+  
 }
 
 var searchAgain = function(event) {
   var searchedCity = event.target.getAttribute("value");
   coordsConvert(searchedCity);
 }
+
+
+
+var cityForecast = function(city, longitude, latitude) {
+
+}
+
+
+
+
+
+
+
+pullSearch();
+searchButton.addEventListener("click", inputScrub);
+
