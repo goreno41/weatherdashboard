@@ -15,7 +15,7 @@ const windSpeed = document.getElementById("windSpeed");
 const humidity = document.getElementById("humidity");
 const uvIndex = document.getElementById("uvIndex");
 
-var cityArr = [];
+var cityArray = [];
 
 var inputScrub = function(event) {
   
@@ -72,9 +72,32 @@ var cityForecast = function(city, longitude, latitude) {
 }
 
 var saveSearch = function(city) {
-
+  cityArray.push(city);
+  localStorage.setItem("cities", JSON.stringify(cityArray));
 }
 
 var pullSearch = function() {
-  
+  cityArray = JSON.parse(localStorage.getItem("cities"));
+
+  var searchedList = document.createElement('ul');
+  searchedList.className = "list-group cityHistory";
+  searchHistory.appendChild(searchedList);
+
+  for (var i = 0; i < cityArray.length; i++) {
+    var searchedCitiesButton = document.createElement("button");
+    searchedCitiesButton.classname = "list-group-item";
+    searchedCitiesButton.setAttribute("type", "button");
+    searchedCitiesButton.setAttribute("value", cityArray[i]);
+    searchedCitiesButton.textContent = cityArray[i];
+    searchedList.prepend(searchedCitiesButton);
+  }
+
+  var cityHistory = document.querySelector("cityHistory");
+  cityHistory.addEventListener("click", searchAgain)
+
+}
+
+var searchAgain = function(event) {
+  var searchedCity = event.target.getAttribute("value");
+  coordsConvert(searchedCity);
 }
