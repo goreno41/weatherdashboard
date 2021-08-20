@@ -124,6 +124,16 @@ var getCurrentWeather = function(forecast){
   todayIcon.setAttribute("src", `http://openweathermap.org/img/wn/${currentIcon}.png`);
   todayIcon.setAttribute("alt", forecast.current.weather[0].main);
 
+  roundTemp(temperature, forecast.current["temp"]);
+
+  windSpeed.textContent = forecast.current["wind_speed"];
+  humidity.textContent = forecast.current["humidity"];
+  uvIndex.textContent = forecast.current["uvi"];
+  
+}
+
+var getForecast = function(forecast) {
+
 
 
 }
@@ -132,6 +142,7 @@ var roundTemp = function(element, temperature) {
   var displayElement =  document.querySelector(element);
   var tempRound = Math.round(temperature);
   displayElement.textContent = tempRound;
+
 }
 
 

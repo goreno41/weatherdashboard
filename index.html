@@ -35,18 +35,6 @@
                 </div>
             </section>
             <section>
-                <div class="row" id="forecastTitle">
-                    <div class="col-12">
-                        <h4>Forecast:</h4>
-                    </div>
-                </div>
-                <div>
-                    <div class="forecast"></div>
-                    <div class="forecast"></div>
-                    <div class="forecast"></div>
-                    <div class="forecast"></div>
-                    <div class="forecast"></div>
-                </div>
                 <div class="row">
                     <div class="card d-none hide" id="currentWeather">
                         <img class="weatherIcon" id="todayIcon"/>
@@ -56,6 +44,48 @@
                             <p id="windSpeed"></p>
                             <p id="humidity"></p>
                             <p id="uvIndex"></p>
+                        </div>
+                    </div>
+                    <div class="row" id="forecastTitle">
+                        <div class="col-12">
+                            <h4>Forecast:</h4>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="card bg-info p-2 mb-3 mb-md-0">
+                            <p class="badge badge-light mb-1" id="date1"></p>
+                            <h4 class="align-middle">
+                                <img class="weatherIcon" id="icon1">
+                                <span id="temp1"></span> &deg;F
+                            </h4>
+                        </div>
+                        <div class="card bg-info p-2 mb-3 mb-md-0">
+                            <p class="badge badge-light mb-1" id="date2"></p>
+                            <h4 class="align-middle">
+                                <img class="weatherIcon" id="icon2">
+                                <span id="temp2"></span> &deg;F
+                            </h4>
+                        </div>
+                        <div class="card bg-info p-2 mb-3 mb-md-0">
+                            <p class="badge badge-light mb-1" id="date3"></p>
+                            <h4 class="align-middle">
+                                <img class="weatherIcon" id="icon3">
+                                <span id="temp3"></span> &deg;F
+                            </h4>
+                        </div>
+                        <div class="card bg-info p-2 mb-3 mb-md-0">
+                            <p class="badge badge-light mb-1" id="date4"></p>
+                            <h4 class="align-middle">
+                                <img class="weatherIcon" id="icon4">
+                                <span id="temp4"></span> &deg;F
+                            </h4>
+                        </div>
+                        <div class="card bg-info p-2 mb-3 mb-md-0">
+                            <p class="badge badge-light mb-1" id="date4"></p>
+                            <h4 class="align-middle">
+                                <img class="weatherIcon" id="icon4">
+                                <span id="temp4"></span> &deg;F
+                            </h4>
                         </div>
                     </div>
                 </div>
