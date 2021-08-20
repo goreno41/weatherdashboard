@@ -31,7 +31,7 @@ var inputScrub = function(event) {
       .join(' ');
 
   if (selectedCity) {
-      getCoords(selectedCity);
+      coordsConvert(selectedCity);
       citySearch.value = '';
   } else {
       alert("Valid city must be entered");
@@ -122,11 +122,17 @@ var getCurrentWeather = function(forecast){
 
   var currentIcon = forecast.current.weather[0].icon;
   todayIcon.setAttribute("src", `http://openweathermap.org/img/wn/${currentIcon}.png`);
-  todayIcon.setAttribute("alt", forecast.current.weather[0].main)
+  todayIcon.setAttribute("alt", forecast.current.weather[0].main);
+
+
 
 }
 
-
+var roundTemp = function(element, temperature) {
+  var displayElement =  document.querySelector(element);
+  var tempRound = Math.round(temperature);
+  displayElement.textContent = tempRound;
+}
 
 
 
