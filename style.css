@@ -1,22 +1,31 @@
-page-title {
-    color: blue;
+.page-title {
     align-items: center;
     margin-left: 25%;
     margin-right: 25%;
-    background-color: white;
-    border: 3px solid #e2711d;
-    border-radius: 10px;
+    color: cornflowerblue;
 
 
 }
 
 header {
     text-align: center;
-    border: 3px solid #e2711d;
+    border: 3px solid cornflowerblue;
     margin-bottom: 50px;
-    background-color: var(--background);
+    background-color: gray;
 }
 
 .center {
     align-items: center;
+}
+
+.today {
+
+    margin-left: 200px;
+
+}
+
+.btn {
+    color: cornflowerblue;
+    border-color: cornflowerblue;
+    background-color: gray;
 }

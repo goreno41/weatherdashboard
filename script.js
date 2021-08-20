@@ -92,6 +92,14 @@ var saveSearch = function(city) {
 
 var pullSearch = function() {
   cityArray = JSON.parse(localStorage.getItem("cities"));
+
+  if (!cityArray) {
+      cityArray = [];
+      return false;
+  } else if (cityArray.length > 5) {
+    cityArray.shift();
+  }
+  
   
   var searchedList = document.createElement('ul');
   searchedList.className = "list-group cityHistory";
@@ -105,9 +113,6 @@ var pullSearch = function() {
     searchedCitiesButton.textContent = cityArray[i];
     searchedList.prepend(searchedCitiesButton);
   }
-  
-  var cityHistory = document.querySelector("cityHistory");
-  cityHistory.addEventListener("click", searchAgain)
   
 }
 
@@ -124,7 +129,9 @@ var getCurrentWeather = function(forecast){
   todayIcon.setAttribute("src", `http://openweathermap.org/img/wn/${currentIcon}.png`);
   todayIcon.setAttribute("alt", forecast.current.weather[0].main);
 
-  roundTemp(temperature, forecast.current["temp"]);
+  var currentTemp = forecast.current["temp"];
+  var roundedCurrentTemp = Math.round(currentTemp);
+  temperature.textContent = roundedCurrentTemp
 
   windSpeed.textContent = forecast.current["wind_speed"];
   humidity.textContent = forecast.current["humidity"];
@@ -134,6 +141,17 @@ var getCurrentWeather = function(forecast){
 
 var getForecast = function(forecast) {
 
+  for (var i = 1; i < 6; i++) {
+    var date = document.querySelector("#date" + i);
+    date.textContent = moment().add(i, "days").format("M/D/YYYY");
+
+    var icon = document.querySelector("#icon" + i);
+    var iconData = forecast.daily[i].weather[0].icon;
+    icon.setAttribute("src", `http://openweathermap.org/img/wn/${iconData}.png`);
+    icon.setAttribute("alt", forecast.daily[i].weather[0].main);
+
+    roundTemp("#temp" + i, forecast.daily[i].temp.day);
+  }
 
 
 }
