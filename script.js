@@ -9,6 +9,9 @@ const searchHistory = document.getElementById("searchHistory");
 var forecastTitle = document.getElementById("forecastTitle");
 var currentWeather = document.getElementById("currentWeather");
 
+const todayIcon = document.getElementById("todayIcon");
+const weatherIcon = document.getElementById("weatherIcon");
+
 const cityName = document.getElementById("cityName");
 const temperature = document.getElementById("temperature");
 const windSpeed = document.getElementById("windSpeed");
@@ -111,6 +114,16 @@ var pullSearch = function() {
 var searchAgain = function(event) {
   var searchedCity = event.target.getAttribute("value");
   coordsConvert(searchedCity);
+}
+
+var getCurrentWeather = function(forecast){
+
+  currentWeather.classList.remove("hide");
+
+  var currentIcon = forecast.current.weather[0].icon;
+  todayIcon.setAttribute("src", `http://openweathermap.org/img/wn/${currentIcon}.png`);
+  todayIcon.setAttribute("alt", forecast.current.weather[0].main)
+
 }
 
 
